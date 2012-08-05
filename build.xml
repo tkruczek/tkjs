@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Hello World" default="Hello" basedir="."> 
+  <property name="HelloText" value="Hello"/>
+	<property name="WorldText" value="World"/>
+	<property name="project_dir" value="/home/tomek/workspace/_EclipseWorkspace/tkjs/" />
+	<property name="jstestdriver_loc" value="/home/tomek/workspace/_EclipseWorkspace/_tools/JsTestDriver-1.3.4.b.jar" />
+	<property name="yuicompressor_loc" value="/home/tomek/workspace/_EclipseWorkspace/_tools/yuicompressor-2.4.7/build/yuicompressor-2.4.7.jar" />
+  <target name="Hello">
+    <echo>${HelloText}</echo>
+  </target>
+	<target name="World">
+		<echo>${WorldText}</echo>
+	</target>
+	<target name="eclipse-test-runner">
+		<java jar="${jstestdriver_loc}" fork="true">
+			<arg value="--config" />
+			<arg value="${project_dir}/jsTestDriver.conf" />
+			<arg value="--tests" />
+			<arg value="all" />
+		</java>
+	</target>
+	<target name="concatenate">
+		<concat destfile="${project_dir}/tkjs.all.js">
+			<files includes="${project_dir}/lib/*.js" />
+		</concat>
+	</target>
+	<target name="compress-js">
+		<java jar="${yuicompressor_loc}" fork="true">
+			<arg value="-o" />
+			<arg value="${project_dir}/tkjs.min.js" />
+			<arg value="-v" />
+			<arg value="--type" />
+			<arg value="js" />
+			<arg value="${project_dir}/tkjs.all.js" />
+		</java>
+	</target>
+</project>
