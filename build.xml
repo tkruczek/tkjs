@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Hello World" default="Hello" basedir="."> 
-  <property name="HelloText" value="Hello"/>
-	<property name="WorldText" value="World"/>
+<project name="tkjs" default="eclipse-test-runner" basedir="."> 
 	<property name="jstestdriver_loc" value="${user.home}/bin/jstestdriver/JsTestDriver-1.3.4.b.jar" />
 	<property name="yuicompressor_loc" value="${user.home}/bin/yuicompressor/yuicompressor-2.4.7/build/yuicompressor-2.4.7.jar" />
-  <target name="Hello">
-    <echo>${HelloText}</echo>
-  </target>
-	<target name="World">
-		<echo>${WorldText}</echo>
-	</target>
-	<target name="test-server">
+  <target name="test-server">
 		<java jar="${jstestdriver_loc}" fork="true">
 			<arg value="--port" />
 			<arg value="9876" />
